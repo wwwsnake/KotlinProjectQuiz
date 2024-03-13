@@ -13,6 +13,8 @@ class MainFragment : Fragment(), View.OnClickListener {
 
     lateinit var btn_yes: Button   //val - неизменяемая переменная, var - изменяемая, lateinit = инициализируем позже
     lateinit var btn_no: Button
+    lateinit var btn_fwd: Button
+    lateinit var btn_back: Button
     lateinit var txt: TextView
     val array = arrayOf(Question(true, "Амазонка - самая длинная река в мире?"),
     Question(false, "Франция - самая большая страна в мире?"),
@@ -32,21 +34,20 @@ class MainFragment : Fragment(), View.OnClickListener {
     private fun initialize(view: View){   //инициализация кнопок и текстового поля
         btn_yes = view.findViewById(R.id.btn_yes)
         btn_no = view.findViewById(R.id.btn_no)
+        btn_fwd = view.findViewById(R.id.btn_fwd)
+        btn_back = view.findViewById(R.id.btn_back)
         txt = view.findViewById(R.id.txt_question)
 
         txt.setText(array[0].question)
 
         btn_yes.setOnClickListener(this)
         btn_no.setOnClickListener(this)
+        btn_fwd.setOnClickListener(this)
+        btn_back.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
-        if (count == array.size -1){
-            count = 0
-            txt.setText(array[count].question)
-        }
         var id = v!!.id;
-
         if (id == R.id.btn_yes){
                            if (array[count].answer== true){
                                Toast.makeText(activity, "Правильно!", Toast.LENGTH_LONG).show()
@@ -55,12 +56,27 @@ class MainFragment : Fragment(), View.OnClickListener {
                            }
         } else if (id == R.id.btn_no){
             if (array[count].answer == false){
-                Toast.makeText(activity, "Не правильно!", Toast.LENGTH_LONG).show()
-            } else  {
                 Toast.makeText(activity, "Правильно!", Toast.LENGTH_LONG).show()
+            } else  {
+                Toast.makeText(activity, "Не правильно!", Toast.LENGTH_LONG).show()
             }
         }
-        count++
-        txt.setText(array.get(count).question)
+        if (id == R.id.btn_fwd) {
+            count++
+            if (count == array.size){
+                count = array.size-1
+                Toast.makeText(activity, "Вопросов больше нет!", Toast.LENGTH_LONG).show()
+            }
+            txt.setText(array.get(count).question)
+        }
+        if (id == R.id.btn_back) {
+            count--
+            if (count == -1){
+                count = 0
+                Toast.makeText(activity, "Это первый вопрос!", Toast.LENGTH_LONG).show()
+            }
+            txt.setText(array.get(count).question)
+        }
+
     }
 }
