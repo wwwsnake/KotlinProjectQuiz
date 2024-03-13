@@ -50,22 +50,22 @@ class MainFragment : Fragment(), View.OnClickListener {
         var id = v!!.id;
         if (id == R.id.btn_yes){
                            if (array[count].answer== true){
-                               Toast.makeText(activity, "Правильно!", Toast.LENGTH_LONG).show()
+                               Toast.makeText(activity, "Правильно!", Toast.LENGTH_SHORT).show()
                            } else  {
-                               Toast.makeText(activity, "Не правильно!", Toast.LENGTH_LONG).show()
+                               Toast.makeText(activity, "Не правильно!", Toast.LENGTH_SHORT).show()
                            }
         } else if (id == R.id.btn_no){
             if (array[count].answer == false){
-                Toast.makeText(activity, "Правильно!", Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, "Правильно!", Toast.LENGTH_SHORT).show()
             } else  {
-                Toast.makeText(activity, "Не правильно!", Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, "Не правильно!", Toast.LENGTH_SHORT).show()
             }
         }
         if (id == R.id.btn_fwd) {
             count++
             if (count == array.size){
                 count = array.size-1
-                Toast.makeText(activity, "Вопросов больше нет!", Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, "Вопросов больше нет!", Toast.LENGTH_SHORT).show()
             }
             txt.setText(array.get(count).question)
         }
@@ -73,7 +73,7 @@ class MainFragment : Fragment(), View.OnClickListener {
             count--
             if (count == -1){
                 count = 0
-                Toast.makeText(activity, "Это первый вопрос!", Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, "Это первый вопрос!", Toast.LENGTH_SHORT).show()
             }
             txt.setText(array.get(count).question)
         }
