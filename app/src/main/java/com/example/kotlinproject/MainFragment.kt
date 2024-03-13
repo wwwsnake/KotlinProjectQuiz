@@ -50,15 +50,15 @@ class MainFragment : Fragment(), View.OnClickListener {
         var id = v!!.id;
         if (id == R.id.btn_yes){
                            if (array[count].answer== true){
-                               Toast.makeText(activity, "Правильно!", Toast.LENGTH_LONG).show()
+                               Toast.makeText(activity, "Правильно!", Toast.LENGTH_SHORT).show()
                            } else  {
                                Toast.makeText(activity, "Не правильно!", Toast.LENGTH_LONG).show()
                            }
         } else if (id == R.id.btn_no){
             if (array[count].answer == false){
-                Toast.makeText(activity, "Правильно!", Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, "Правильно!", Toast.LENGTH_SHORT).show()
             } else  {
-                Toast.makeText(activity, "Не правильно!", Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, "Не правильно!", Toast.LENGTH_SHORT).show()
             }
         }
         if (id == R.id.btn_fwd) {
